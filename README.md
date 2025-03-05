@@ -1,11 +1,9 @@
 # Pedestrian-accidents-GER
 
-## 1. Background  
+## Background  
 This project analyzes and visualizes pedestrian accident data in Germany from 2019 to 2023 since the official website can't process multiple years. It uses official accident datasets and generates an interactive map highlighting accident hotspots.
 The accident data is sourced from the official German accident atlas:  
 👉 [https://unfallatlas.statistikportal.de](https://unfallatlas.statistikportal.de)
-
-The project workflow consists of two main Python scripts:
 
 ---
 
