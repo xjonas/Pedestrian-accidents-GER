@@ -1,11 +1,3 @@
-"""
-Pedestrian Accident Data Processor
-
-This script processes German traffic accident data from 2019-2023, filtering for
-pedestrian-involved accidents and extracting their geographic coordinates.
-
-"""
-
 import pandas as pd
 from pathlib import Path
 import logging
@@ -20,13 +12,6 @@ class AccidentDataProcessor:
     """
 
     def __init__(self, input_dir: str = "data/input", output_dir: str = "data/output"):
-        """
-        Initialize the processor with input and output directories.
-
-        Args:
-            input_dir: Directory containing the accident CSV files
-            output_dir: Directory for storing the processed output
-        """
         self.input_dir = Path(input_dir)
         self.output_dir = Path(output_dir)
         self.years_to_process = list(range(2019, 2024))  # 2019-2023
@@ -46,12 +31,7 @@ class AccidentDataProcessor:
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def get_input_files(self) -> List[Path]:
-        """
-        Find all relevant accident data files in the input directory.
-
-        Returns:
-            List of Path objects for accident data files from 2019-2023
-        """
+        # Find all relevant accident data files in the input directory.
         all_files = list(self.input_dir.glob("Unfallorte*_LinRef.csv"))
 
         # Filter for the years we want
@@ -66,15 +46,7 @@ class AccidentDataProcessor:
         return year_files
 
     def process_file(self, file_path: Path) -> Optional[pd.DataFrame]:
-        """
-        Process a single accident data CSV file, extracting pedestrian accidents.
-
-        Args:
-            file_path: Path to the CSV file
-
-        Returns:
-            DataFrame containing filtered pedestrian accident data, or None if processing failed
-        """
+        # Process a single accident data CSV file, extracting pedestrian accidents.
         try:
             # Extract year from filename
             year = None
@@ -108,12 +80,7 @@ class AccidentDataProcessor:
             return None
 
     def process_all_files(self) -> pd.DataFrame:
-        """
-        Process all accident data files and combine into a single DataFrame.
-
-        Returns:
-            Combined DataFrame with all pedestrian accident data
-        """
+        #Process all accident data files and combine into a single DataFrame.
         input_files = self.get_input_files()
         self.logger.info(f"Found {len(input_files)} input files to process")
 
@@ -135,28 +102,14 @@ class AccidentDataProcessor:
 
 
     def save_output(self, df: pd.DataFrame, filename: str = "PedestrianAccidents_2019_2023.csv") -> str:
-        """
-        Save the processed DataFrame to CSV.
-
-        Args:
-            df: DataFrame to save
-            filename: Output filename
-
-        Returns:
-            Path to the saved file
-        """
+        # Save the processed DataFrame to CSV.
         output_path = self.output_dir / filename
         df.to_csv(output_path, index=False)
         self.logger.info(f"Saved output to {output_path}")
         return str(output_path)
 
     def run(self) -> str:
-        """
-        Run the complete processing pipeline.
-
-        Returns:
-            Path to the output file
-        """
+        # Run the complete processing pipeline.
         self.logger.info("Starting pedestrian accident data processing")
         start_time = datetime.datetime.now()
 
