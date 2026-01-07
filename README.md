@@ -1,64 +1,29 @@
-# Pedestrian-accidents-GER
+# Pedestrian Accidents Germany (2019-2023)
 
-## Background  
-This project analyzes and visualizes pedestrian accident data in Germany from 2019 to 2023 since the official website can't process multiple years. It uses official accident datasets and generates an interactive map highlighting accident hotspots.
-The accident data is sourced from the official German accident atlas:  
-👉 [https://unfallatlas.statistikportal.de](https://unfallatlas.statistikportal.de)
+This project visualizes where pedestrian accidents happen in Germany. 
 
----
+The official 'Unfallatlas' website only lets you look at one year at a time, so this tool combines data from 2019-2023 to show the bigger picture.
 
-## Workflow  
+## Data Source
+The raw data comes from the German Statistical Office: 
+**Reference:** https://unfallatlas.statistikportal.de
 
-### 1. **Data Processing**  
-**`pedestrian_accident_processor.py`**  
-- Loads raw accident data (`Unfallorte*.csv`) from the **data/input/** folder.
-- Cleans, filters, and merges yearly datasets.
-- Focuses on pedestrian accidents and compiles them into a single file:  
-  → **`data/output/PedestrianAccidents_2019_2023.csv`**
+We use the "Unfallorte" CSV files (with LinRef).
 
-### 2. **Map Generation**  
-**`generate_accident_map.py`**  
-- Takes the processed pedestrian accident data.
-- Visualizes accident hotspots on an interactive map.
-- Generates an HTML map output:  
-  → **`data/output/hotspots_map.html`**
-
----
-
-## Project Structure
-```
-Pedestrian-accidents-GER/
-├── accident_processing.log
-├── data/
-│   ├── input/
-│   │   └── Unfallorte2019-2023_LinRef.csv
-│   ├── output/
-│       ├── PedestrianAccidents_2019_2023.csv
-│       └── hotspots_map.html
-├── generate_accident_map.py
-├── pedestrian_accident_processor.py
-└── requirements.txt
-```
-
----
-
-## Modularity
-This project is fully modular and can easily be adapted to analyze **any type of accident data** provided in the **Unfallatlas**.  
-By adjusting the filter conditions in `pedestrian_accident_processor.py`, you can switch the focus from pedestrian accidents to:
-- Bicycle accidents
-- Car accidents
-- Motorcycle accidents  
-...or any other category available in the dataset.
-
-Simply place the desired CSV files from the Unfallatlas in the **data/input/** folder, modify the filter logic, and re-run the pipeline.
-
----
-
-## Installation
-1. Clone the repository.
-2. Install dependencies:
+## How to use
+1. Download the CSV files for the years you want (2019-2023) and put them in `data/input/`.
+2. Run the processor to clean and merge the data:
    ```bash
-   pip install -r requirements.txt
+   python pedestrian_accident_processor.py
    ```
+   This creates a clean file `data/output/PedestrianAccidents_2019_2023.csv`.
+   
+3. Generate the heatmap:
+   ```bash
+   python generate_accident_map.py
+   ```
+   Open `data/output/hotspots.html` in your browser to see the result.
 
----
+## Requirements
+- pandas
+- folium
