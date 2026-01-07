@@ -1,6 +1,6 @@
-# Pedestrian Accidents Germany (2019-2023)
+# Pedestrian Accidents Germany 
 
-This project visualizes where pedestrian accidents happen in Germany. 
+This project visualizes where pedestrian accidents happen in Germany 2019-2023. 
 
 The official 'Unfallatlas' website only lets you look at one year at a time, so this tool combines data from 2019-2023 to show the bigger picture.
 
