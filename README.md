@@ -2,7 +2,7 @@
 
 This project visualizes where pedestrian accidents happen in Germany 2019-2023. 
 
-The official 'Unfallatlas' website only lets you look at one year at a time with limited visulization, so this tool combines data from 2019-2023 to create a frontend to show the bigger picture.
+The official 'Unfallatlas' website only lets you look at one year at a time with limited visualization. This tool combines data from 2019-2023 in a frontend page to show a more comprehensive picture.
 <img width="1192" height="849" alt="Screenshot 2026-01-07 at 17 52 22" src="https://github.com/user-attachments/assets/287b6a29-a781-4a7c-8ab0-f8e6a18d652d" />
 
 
